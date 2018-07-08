@@ -21,8 +21,10 @@ getPuzzle((error, puzzle) => {
   }
 })
 
-// Making an HTTP request
-
-
-// request.open('GET', 'http://restcountries.eu/rest/v2/all')
-// request.send();
+getCountry('SV',(error, country) => {
+  if(error) {
+    console.log(error);
+  } else {
+    console.log(country.name)
+  }
+})
