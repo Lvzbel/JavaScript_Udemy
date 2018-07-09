@@ -13,18 +13,14 @@ window.addEventListener('keypress', function (e) {
   guessesElement.textContent = gameOne.statusMessage;
 })
 
-getPuzzle((error, puzzle) => {
-  if(error) {
-    console.log(`Error: ${error}`)
-  } else {
-    console.log(puzzle)
-  }
+getPuzzle('2').then((puzzle) => {
+  console.log(puzzle)
+}, (err) => {
+  console.log(`Error: ${err}`)
 })
 
-getCountry('SV',(error, country) => {
-  if(error) {
-    console.log(error);
-  } else {
-    console.log(country.name)
-  }
+getCountry('SV').then((country) => {
+  console.log(`Country Name: ${country.name}`)
+}, (err) => {
+  console.log(`Error: ${err}`)
 })
