@@ -10,8 +10,17 @@ window.addEventListener('keypress', function (e) {
 })
 
 const render = () => {
-  puzzleElement.textContent = gameOne.puzzle;
+  const puzzleArray = gameOne.puzzle.split('')
+
+  puzzleElement.innerHTML = '';
   guessesElement.textContent = gameOne.statusMessage;
+  
+  puzzleArray.forEach(letter => {
+    const span = document.createElement('span')
+    span.textContent = letter
+    puzzleElement.appendChild(span)
+  });
+
 }
 
 const startGame = async () => {
