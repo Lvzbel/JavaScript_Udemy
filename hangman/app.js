@@ -2,42 +2,59 @@
 const puzzleElement = document.querySelector('#puzzle');
 const guessesElement = document.querySelector('#guesses');
 
-const gameOne = new Hangman('Los Angeles', 5);
-
-puzzleElement.textContent = gameOne.puzzle;
-guessesElement.textContent = gameOne.statusMessage;
+let gameOne
 
 window.addEventListener('keypress', function (e) {
   gameOne.makeGuess(e.key)
+  render()
+})
+
+const render = () => {
   puzzleElement.textContent = gameOne.puzzle;
   guessesElement.textContent = gameOne.statusMessage;
-})
+}
 
-getPuzzle('2').then((puzzle) => {
-  console.log(puzzle)
-}).catch((err) => {
-  console.log(err)
-})
+const startGame = async () => {
+  const puzzle = await getPuzzle('2')
+  gameOne = new Hangman(puzzle, 5)
+  render()
+}
 
-getCountry('SV').then((country) => {
-  console.log(country.name);
-}).catch((err) => {
-  console.log(err);
-})
+document.querySelector('#reset').addEventListener('click', startGame)
 
-getLocation().then((data) => {
-  console.log(`City: ${data.city}, Region: ${data.region}, Country: ${data.country}`);
-}).catch((err) => {
-  console.log(err)
-})
+startGame()
+// getPuzzle('2').then((puzzle) => {
+//   console.log(puzzle)
+// }).catch((err) => {
+//   console.log(err)
+// })
 
-getLocation().then((data) => {
-  return getCountry(data.country)
-}).then((country) => {
-    console.log(`Based on your IP you are currently located in ${country.name}`)
-}).catch((err) => {
-  console.log(err)
-})
+// getCountry('SV').then((country) => {
+//   console.log(country.name);
+// }).catch((err) => {
+//   console.log(err);
+// })
+
+// getLocation().then((data) => {
+//   console.log(`City: ${data.city}, Region: ${data.region}, Country: ${data.country}`);
+// }).catch((err) => {
+//   console.log(err)
+// })
+
+// getLocation().then((data) => {
+//   return getCountry(data.country)
+// }).then((country) => {
+//     console.log(`Based on your IP you are currently located in ${country.name}`)
+// }).catch((err) => {
+//   console.log(err)
+// })
+
+// getCurrentCountry().then((country) => {
+//   console.log(`Coming from challenge: `, country.name);
+// }).catch((error) => {
+//   console.log(error)
+// })
+
 // getCountry('SV').then((country) => {
 //   console.log(`Country Name: ${country.name}`)
 // }, (err) => {
