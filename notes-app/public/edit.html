@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content=.css">
+  <link rel="stylesheet" href="/styles/style.css">
+  <title>Create a Note</title>
+</head>
+
+<body>
+
+  <div class="header">
+    <div class="container">
+      <h1 class="header__title">Notes App</h1>
+      <h2 class="header__subtitle">Take notes and never forget</h2>
+    </div>
+  </div>
+
+  <div class="actions">
+    <div class="actions__container actions__container--spaced">
+      <a href="/">Home</a>
+      <span id="timeFromNow"></span>
+    </div>
+  </div>
+
+  <div class="container">
+    <input class="title-input" type="text" id="note-title" placeholder="Note title">
+    <textarea class="body-input" id="note-body" cols="30" rows="10" placeholder="Enter note text"></textarea>
+    <button class="button button--secondary" id="remove-note">Remove Note</button>
+  </div>
+
+  <script src="/scripts/edit-bundle.js"></script>
+</body>
+
+</html>
