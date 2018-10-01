@@ -1,14 +1,11 @@
 import { getFilters, setFilters } from './filters'
-setFilters({
-    searchText: 'Hevov',
-    hideCompleted: false
-})
-console.log(getFilters());
-setFilters({
-    searchText: 'Hevo',
-    hideCompleted: true
-})
-console.log(getFilters());
+import { getTodos, createTodo, removeTodo, toggleTodo } from './todos'
+
+console.log(getTodos());
+removeTodo("771d7af7-4f2d-4c8c-bbaf-966a79fd8ea2");
+console.log(getTodos());
+
+
 // Set up index.html to load the bundle
 // Make sure to load uuid via an npm module when necessary
 
