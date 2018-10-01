@@ -1,3 +1,5 @@
+import { getFilters } from './filters'
+import { getTodos, removeTodo, toggleTodo } from './todos'
 // renderTodos
 // Arguments: none
 // Return value: none
@@ -41,6 +43,9 @@ const generateTodoDOM = (todo) => {
   
     // Setting div's inside structure
     checkbox.setAttribute('type', 'checkbox')
+    if (todo.completed === true) {
+        checkbox.checked = true
+    }
     containerEl.appendChild(checkbox);
   
     // Setup container
@@ -57,8 +62,12 @@ const generateTodoDOM = (todo) => {
     todoDiv.appendChild(button);
     button.addEventListener('click', () => {
       removeTodo(todo.id);
-      saveTodos(todos);
-      renderTodos(todos, filters);
+      renderTodos();
+    })
+
+    checkbox.addEventListener('change', (e) => {
+        toggleTodo(todo.id)
+        renderTodos()
     })
   
     return todoDiv
@@ -83,4 +92,4 @@ const generateSummaryDOM = (incompleteTodos) => {
 
 // Make sure to set up the exports
 
-export { renderTodos, generateTodoDOM, generateSummaryDOM }
+export { renderTodos }
